@@ -42,6 +42,8 @@
 - Älä sepitä, plagioi tai kopioi kuvia luvattomasti.
 
 
+- Virtuaalikoneohjelmistona _UTM_.
+- ISO-tiedostona _debian-13.1.0-arm64-netinst.iso_.
 
 
 
