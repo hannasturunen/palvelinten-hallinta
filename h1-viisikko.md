@@ -23,13 +23,15 @@
   -  `user.present`: kertoo käyttäjät
   -  `cmd.run`: komennon suorittaminen, suoritetaan vain silloin, kun muutoksia tarvitaan
 - Ohjeet löytyvät komennolla `sudo salt-call --local sys.state_doc`.
+- Oma huomio: Vielä nämä komennot eivät kauheasti avaudu, mutta eiköhän testaillessa avaudu paremmin. 
 
 ### Karvinen 2018: Salt Quickstart – Salt Stack Master and Slave on Ubuntu Linux
 
 - Salt:n avulla voidaan hallita tuhatta tietokonetta.
 - Hallittavia tietokoneita kutsutaan orjiksi. Ne voivat sijaita missä tahansa: NAT:n tai palomuurin takana tai tuntemattomassa osoitteessa. Silti näitä voidaan hallita.
 - Verkossa on yksi isäntä (_master_) ja useita orjia (_slave_ tai _minion_).
-- Artikkelissa kerrotaan miten asennetaan isäntä ja orja. Orjan on tiedettävä missä isäntä sijaitsee. Orjalle voi antaa itse nimen (_id_) tai luoda se automaattisesti isäntänimen perusteella. Jokaisella orjalla on oltava eri id.  
+- Artikkelissa kerrotaan miten asennetaan isäntä ja orja. Orjan on tiedettävä missä isäntä sijaitsee. Orjalle voi antaa itse nimen (_id_) tai luoda se automaattisesti isäntänimen perusteella. Jokaisella orjalla on oltava eri id.
+- Oma huomio: Todella jännittävää, että näin voidaan hallita todella monia koneita. Helpottaa työtä valtavasti, mutta myös virheet moninkertaistuvat, joten onkin tärkeää testata asioita ennen niide siirtämistä kunnolla käyttöön.
 
 ### Karvinen 2006: Raportin kirjoittaminen
 
@@ -40,6 +42,7 @@
   - helppolukuinen: käytö väliotsikoita ja kirjoita huolellista kieltä
   - viittaa lähteisiin
 - Älä sepitä, plagioi tai kopioi kuvia luvattomasti.
+- Oma huomio: Teen muistiinpanoni töissä laboratoriossa hyvin samalla tavalla.
 
 ## Virtuaalikonetehtävät
 
@@ -49,8 +52,8 @@ Tein tehtävät lauantaina 25.10.2025 ja sunnuntaina 26.10.2025 Helsingissä kot
 ## a) Asenna Debian 13-Trixie virtuaalikoneeseen
 
 - Asennettu omalle koneelle UTM (https://mac.getutm.app/) ja ISO-tiedosto Debianin sivuilta (https://cdimage.debian.org/debian-cd/current/arm64/iso-cd/). Apuna käytetty Heinosen (Heinonen, 2025) ohjeita Linuxin asentamisesta, joita sovellettu. Annettu seuraavat:
-  - virtuaalikoneohjelmistona _UTM_.
-  - ISO-tiedostona _debian-13.1.0-arm64-netinst.iso_.
+  - virtuaalikoneohjelmistona `UTM`.
+  - ISO-tiedostona `debian-13.1.0-arm64-netinst.iso`.
   - muistiksi laitettu 4096 MiB, CPU:iden määrä 2 ja aseman kooksi 30 GiB.
 - Lopuksi testattu, että virtuaalikone toimii hyvin ajamalla muutama komento terminaalissa ja hakemalla "sää Helsinki" Firefox-selaimella. Molemmat toimivat hyvin.
 - Aikaa tähän vaiheeseen meni noin 1h.
