@@ -1,6 +1,6 @@
 # h1 Viisikko
 
-## Lue ja tiivistä
+## x) Lue ja tiivistä
 
 ### Karvinen 2025: Install Salt on Debian 13 Trixie
 
@@ -31,6 +31,18 @@
 - Verkossa on yksi isäntä (_master_) ja useita orjia (_slave_ tai _minion_).
 - Artikkelissa kerrotaan miten asennetaan isäntä ja orja. Orjan on tiedettävä missä isäntä sijaitsee. Orjalle voi antaa itse nimen (_id_) tai luoda se automaattisesti isäntänimen perusteella. Jokaisella orjalla on oltava eri id.  
 
+### Karvinen 2006: Raportin kirjoittaminen
+
+- Raportoinnissa kerrotaan täsmällisesti mitä teit ja mitä tapahtui. Sitä kirjoitetaan samalla, kun tehdään.
+- Raportin on oltava:
+  - toistettava: tuloksen pitäisi olla sama, kuka tahansa sen tekeekin, jos se tehdään samassa ympäristössä. Siksi on tärkeää raportoida myös ympäristö, jossa tehtävä ja raportti tehtiin
+  - täsmällinen: kirjoita esimerkiksi minkä komennon annoit ja mitä klikkasit. Kellonajat ylös. Onnistuiko vai ei ja millä testillä sen totesit? Raportoi onnistumiset ja ongelmat. Kirjoitetaan imperfektissä
+  - helppolukuinen: käytö väliotsikoita ja kirjoita huolellista kieltä
+  - viittaa lähteisiin
+- Älä sepitä, plagioi tai kopioi kuvia luvattomasti.
+
+
+
 
 
 ## Lähteet
@@ -38,3 +50,5 @@
 - Karvinen, T. 20.10.2025. Install Salt on Debian 13 Trixie. Luettavissa: https://terokarvinen.com/install-salt-on-debian-13-trixie/. Luettu: 25.10.2025.
 - Karvinen, T. 28.10.2021. Run Salt Command Locally. Luettavissa: https://terokarvinen.com/2021/salt-run-command-locally/. Luettu: 25.10.2025.
 - Karvinen, T. 28.3.2018. Salt Quickstart – Salt Stack Master and Slave on Ubuntu Linux. Luettavissa: https://terokarvinen.com/2018/03/28/salt-quickstart-salt-stack-master-and-slave-on-ubuntu-linux/. Luettu: 25.10.2025.
+- Karvinen, T. 4.6.2006. Raportin kirjoittaminen. Luettavissa: https://terokarvinen.com/2006/06/04/raportin-kirjoittaminen-4/. Luettu: 25.10.2025.
+- Pohjana Tero Karvinen 2025: Palvelinten Hallinta. Luettavissa: https://terokarvinen.com/palvelinten-hallinta/. Luettu: 25.10.2025.
