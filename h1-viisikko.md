@@ -41,16 +41,29 @@
   - viittaa lähteisiin
 - Älä sepitä, plagioi tai kopioi kuvia luvattomasti.
 
+## Virtuaalikonetehtävät
 
-- Virtuaalikoneohjelmistona _UTM_.
-- ISO-tiedostona _debian-13.1.0-arm64-netinst.iso_.
+Tein tehtävät lauantaina 25.10.2025 ja sunnuntaina 26.10.2025 Helsingissä kotona. Tein lauantaina tiivistelmät ja Debian 13-Trixien asentamisen (kohdat x ja a) ja sunnuntaina Salt:n asentamisen, komentojen harjoittelua ja idempotentin (kohdat b-d). Koneena kaikissa tehtävissä on MacBook Air, jossa käyttöjärjestelmänä on macOS ja järjestelmäpiirinä Apple M4.
 
+
+## a) Asenna Debian 13-Trixie virtuaalikoneeseen
+
+- Asennettu omalle koneelle UTM (https://mac.getutm.app/) ja ISO-tiedosto Debianin sivuilta (https://cdimage.debian.org/debian-cd/current/arm64/iso-cd/). Apuna käytetty Heinosen (Heinonen, 2025) ohjeita Linuxin asentamisesta, joita sovellettu. Annettu seuraavat:
+  - virtuaalikoneohjelmistona _UTM_.
+  - ISO-tiedostona _debian-13.1.0-arm64-netinst.iso_.
+  - muistiksi laitettu 4096 MiB, CPU:iden määrä 2 ja aseman kooksi 30 GiB.
+- Lopuksi testattu, että virtuaalikone toimii hyvin ajamalla muutama komento terminaalissa ja hakemalla "sää Helsinki" Firefox-selaimella. Molemmat toimivat hyvin.
+- Aikaa tähän vaiheeseen meni noin 1h.
+
+
+## b) Asenna Salt (salt-minion) Linuxille (uuteen virtuaalikoneeseesi)
 
 
 ## Lähteet
 
-- Karvinen, T. 20.10.2025. Install Salt on Debian 13 Trixie. Luettavissa: https://terokarvinen.com/install-salt-on-debian-13-trixie/. Luettu: 25.10.2025.
-- Karvinen, T. 28.10.2021. Run Salt Command Locally. Luettavissa: https://terokarvinen.com/2021/salt-run-command-locally/. Luettu: 25.10.2025.
-- Karvinen, T. 28.3.2018. Salt Quickstart – Salt Stack Master and Slave on Ubuntu Linux. Luettavissa: https://terokarvinen.com/2018/03/28/salt-quickstart-salt-stack-master-and-slave-on-ubuntu-linux/. Luettu: 25.10.2025.
+- Heinonen, J. 20.8.2025. How to Install Linux to Virtualbox? Luettavissa: https://github.com/johannaheinonen/johanna-test-repo/blob/main/linux-20082025.md. Luettu: 25.10.2025.
 - Karvinen, T. 4.6.2006. Raportin kirjoittaminen. Luettavissa: https://terokarvinen.com/2006/06/04/raportin-kirjoittaminen-4/. Luettu: 25.10.2025.
+- Karvinen, T. 28.3.2018. Salt Quickstart – Salt Stack Master and Slave on Ubuntu Linux. Luettavissa: https://terokarvinen.com/2018/03/28/salt-quickstart-salt-stack-master-and-slave-on-ubuntu-linux/. Luettu: 25.10.2025.
+- Karvinen, T. 28.10.2021. Run Salt Command Locally. Luettavissa: https://terokarvinen.com/2021/salt-run-command-locally/. Luettu: 25.10.2025.
+- Karvinen, T. 20.10.2025. Install Salt on Debian 13 Trixie. Luettavissa: https://terokarvinen.com/install-salt-on-debian-13-trixie/. Luettu: 25.10.2025.
 - Pohjana Tero Karvinen 2025: Palvelinten Hallinta. Luettavissa: https://terokarvinen.com/palvelinten-hallinta/. Luettu: 25.10.2025.
