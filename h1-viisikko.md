@@ -115,7 +115,8 @@ Tein tehtävät lauantaina 25.10.2025 ja sunnuntaina 26.10.2025 Helsingissä kot
 
 - ... 12
 
-### pkg.installed
+
+### pkg eli paketit
 
 - 12.25 Komennolla `sudo salt-call --local -l info state.single pkg.installed tree` tarkistin onko tree-paketti asennettuna ja jos ei, asennettiin se. Tämän jälkeen antoi tiedot mitä teki. Tiedoissa:
   - ID:nä _tree_ ja funktiona _pkg.installed_ eli haluttiin selvittää onko tree asennettuna vai ei ja jos ei ollut, se asennettiin
@@ -136,7 +137,8 @@ Tein tehtävät lauantaina 25.10.2025 ja sunnuntaina 26.10.2025 Helsingissä kot
 
 - ... 14
 
-### file.managed
+
+### file eli tiedostot
 
 - 12.50 Komennolla `sudo salt-call --local -l info state.single file.managed /tmp/hellohanna` katsoin onko tiedostoa olemassa ja sen pitäisi olla, koska tein sellaisen aikaisemmin. Antoikin vastaukseksi, että `tmp/hellohanna` on olemassa, joten muutoksia ei tehdä. Sen lisäksi tiedoissa:
   - ID:nä nyt _/tmp/hellohanna_ ja funktiona _file.managed_
@@ -161,6 +163,29 @@ Tein tehtävät lauantaina 25.10.2025 ja sunnuntaina 26.10.2025 Helsingissä kot
   - onnistuneita muutoksia oli 1 ja epäonnistuneita 0
 
 - ... 17
+
+
+### service eli palvelut
+
+- 13.12 Komennolla `sudo salt-call --local -l info state.single service.running apache2 enable=True` voin varmistaa, että Apache2-palvelin on käynnissä ja se käynnistetään automaattisesti, kun järjestelmä uudelleenkäynnistetään. Tässä heti näki, että ei ole toiminnassa, koska teksti oli punaisena, kun aikaisemmin se oli ollut vihreänä. Tiedoissa:
+  - ID:nä _apahc2_ ja funktiona _service.running_
+  - kommentissa luki, että apache2-nimistä palvelua ei ole saatavilla (ja tämä on ihan totta, koska en ole asentanut sitä virtuaalikoneelleni)
+  - nyt onnistuineita muutoksia oli 0 ja epäonnistuneita 1
+
+- ... 18
+
+- 13.19 Komennolla `sudo salt-call --local -l info state.single service.dead apache2 enable=False` haluan, että Apache2-palvelin on pysäytetty ja se ei käynnisty järjestelmän uudelleenkäynnistyessä. Nyt tiedot ovat taas vihreinä. Tiedoissa:
+  - ID:nä _apahc2_ ja funktiona _service.dead_
+  - kommentissa luki sama kuin aiemmin, ettei apache:sta ole saatavilla
+  - onnistuineita muutoksia oli 1 ja epäonnistuneita 0, koska Apache2 ei ole päällä, koska sitä ei ole
+
+- ... 19
+
+
+### user
+
+
+
 
 
 
