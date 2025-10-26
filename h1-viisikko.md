@@ -68,40 +68,46 @@ Tein tehtävät lauantaina 25.10.2025 ja sunnuntaina 26.10.2025 Helsingissä kot
 
 - 9.26 Loin uuden saltrepo-kansion komennolla `mkdir saltrepo/` ja sen jälkeen menin luotuun kansioon komennolla `cd saltrepo/`. Tämän jälkeen latasin kaksi tiedostoa komennoilla `wget https://packages.broadcom.com/artifactory/api/security/keypair/SaltProjectKey/public` ja `wget https://github.com/saltstack/salt-install-guide/releases/latest/download/salt.sources`. Lataukset näyttivät onnistuneen.
 
-- ... KUVA 02 ja 03 ...
+![saltrepo ja lataukset](images/h1-image02.png)
+
+![saltrepo ja lataukset](images/h1-image03.png)
 
 - 9.35 Tutkin julkista avainta komennolla `less public`, joka avasi julkisen avaintiedoston. Suljin tiedoston painamalla `q`-näppäintä.
 
-- ... KUVA 04 ...
+![public key](images/h1-image04.png)
 
 -  9.38 Avasin toisen tiedoston komennolla `less salt.sources`. Tämän suljin kanssa `q`-näppäimellä.
 
-- ... KUVA 05 ...
+![salt sources](images/h1-image05.png)
 
 - 9.40 Katsoin vielä julkisen avaimen sormenjäljen komennolla `gpg --show-key --with-fingerprint public`. Tämä siis tunnistaa avaimen.
 
-- ... KUVA 06 ...
+![fingerprint public key](images/h1-image06.png)
 
 - 9.43 Avaimen lisäämisellä luotan projektiin. Karvinen kertoo, että tässä on paljon luottamusta, koska tämä olisi sama kuin lataisimme ohjelman järjestelmäämme ja sitä kautta joku voisi saada root-tason oikeudet sinne. Annoin komennot `sudo cp public /etc/apt/keyrings/salt-archive-keyring.pgp` ja `sudo cp salt.sources /etc/apt/sources.list.d/`. Annoin ensimmäiselle komennolle salasanan (kirjoitin ensimmäisellä kerralla väärin).
 
-- ... KUVA 07 ...
+![kopioinnit](images/h1-image07.png)
 
 - 9.51 Ensin päivitin taas ohjelmat komennolla `sudo apt-get update`, jonka jälkeen asensin Salt:n orjan (minion) ja isännän (master) komennolla `sudo apt-get install salt-minion salt-master`. Kysyi haluanko ladata tietyt paketit, jotka vievät tietyn verran tilaa ja vastasin `Y` eli yes. Kesti hetken aikaa, kun asensi kaiken.
 
-- ... KUVA 08 ...
+![asennukset salt minion master](images/h1-image08.png)
 
 - 9.57 Testasin vielä, että Salt toimii niin kuin pitääkin komennolla `salt --version`. Komento antoi `salt 3007.8 (Chlorine)`, joten Salt on ladattu onnistuneesti.
 
-- ... KUVA 09 ...
+![salt verion](images/h1-image09.png)
 
 - 10.00 Karvisen ohjeissa on myös esimerkki oikeasta Salt-komennosta, jota halusin itsekin testata. Annoin komennon `sudo salt-call --local state.single file.managed /tmp/hellohanna`. 
 
-- ... KUVA 10 ...
+![salt-testi](images/h1-image10.png)
 
 - 10.02 Tämän jälkeen kävin vielä katsomassa, että juuri tehty tiedosto on varmasti tuolla komennolla `ls /tmp/hellohanna` ja antoi tulosteena `/tmp/hellohanna`, joten Salt on asennettuna ja se on testattu kahdella tavalla.
 
-- ... KUVA 11 ...
+![salt-testi onnistui](images/h1-image11.png)
 
+
+## c) Viisi tärkeintä. Näytä Linuxissa esimerkit viidestä tärkeimmästä Saltin tilafunktiosta: pkg, file, service, user, cmd. Analysoi ja selitä tulokset.
+
+- 
 
 
 ## Lähteet
