@@ -113,7 +113,7 @@ Tein tehtävät lauantaina 25.10.2025 ja sunnuntaina 26.10.2025 Helsingissä kot
 - Tässä tehtävässä on käytetty apuna Karvisen ohjetta Salt:n komennoista, _Run Salt Command Locally_ (Karvinen, 2021). 
 - klo 12.22 Tarkistin komennolla `sudo salt-call --version`, että minulla oli Salt-orja koneella. Oli, kuten pitikin olla, koska asensin sen juuri aikaisemmin.
 
-- ... 12
+![salt-call versio](images/h1-image12.png)
 
 
 ### pkg eli paketit
@@ -127,7 +127,7 @@ Tein tehtävät lauantaina 25.10.2025 ja sunnuntaina 26.10.2025 Helsingissä kot
   - alempana ilmoitettiin, että _succeeded_ eli onnistuneita oli 1 (ja muutettuja changed oli myös 1) ja _failed_ (epäonnistuneita) oli 0
   - lopuksi kerrottiin kuinka monta tilaa muokattiin ja tähän kulunut aika
 
-- ... 13
+![pkg tree installed](images/h1-image13.png)
 
 - 12.40 Komennolla `sudo salt-call --local -l info state.single pkg.removed tree` poistin tree-paketin. Tässä tietoina verrattuna edelliseen:
   - ID sama tree, mutta funktiona _pkg.removed_, koska paketti poistettu
@@ -135,7 +135,7 @@ Tein tehtävät lauantaina 25.10.2025 ja sunnuntaina 26.10.2025 Helsingissä kot
   - muutoksissa kerrotaan, että vanha paketti oli _2.2.1-1_ ja uutta ei ole
   - onnistuneita muutoksia oli 1 ja epäonnistuneita 0
 
-- ... 14
+![pkg tree removed](images/h1-image14.png)
 
 
 ### file eli tiedostot
@@ -146,7 +146,7 @@ Tein tehtävät lauantaina 25.10.2025 ja sunnuntaina 26.10.2025 Helsingissä kot
   - changes-kohdassa ei ole mitään, joten muutoksia ei tehty
   - onnistuneita oli taas 1 ja epäonnistuneita 0
 
-- ... 15
+![file managed tiedosto](images/h1-image15.png)
 
 - 12.59 Annoin komennon `sudo salt-call --local -l info state.single file.managed /tmp/moihanna contents="foo"`, jolla tarkistin, että onko moihanna-kansiota olemassa ja sisältääkö se tekstin _foo_. Tietoina tuli:
   - ID:nä nyt _/tmp/moihanna_ ja funktiona sama _file.managed_ (funktio sama kuin edellisessä)
@@ -154,7 +154,7 @@ Tein tehtävät lauantaina 25.10.2025 ja sunnuntaina 26.10.2025 Helsingissä kot
   - muutoksissa kerrottiin, että eroina se, että luotiin uusi tiedosto
   - onnistuneita oli taas 1 ja epäonnistuneita 0
 
-- ... 16
+![file managed foo](images/h1-image16.png)
 
 - 13.05 Lopuksi ajoin komennon `sudo salt-call --local -l info state.single file.absent /tmp/hellohanna`, joka poistaa tiedoston _/tmp/hellohanna_, jos se on olemassa. Tiedosto on olemassa, joten tällöin se poistetaan.
   -  ID oli _/tmp/hellohanna_ ja funktiona _file.absent_
@@ -162,7 +162,7 @@ Tein tehtävät lauantaina 25.10.2025 ja sunnuntaina 26.10.2025 Helsingissä kot
   -  muutoksissa luki _removed: /tmp/hellohanna_ eli tiedosto poistettiin ja sitä ei enää ole
   - onnistuneita muutoksia oli 1 ja epäonnistuneita 0
 
-- ... 17
+![file absent](images/h1-image17.png)
 
 
 ### service eli palvelut
@@ -172,14 +172,14 @@ Tein tehtävät lauantaina 25.10.2025 ja sunnuntaina 26.10.2025 Helsingissä kot
   - kommentissa luki, että apache2-nimistä palvelua ei ole saatavilla (ja tämä on ihan totta, koska en ole asentanut sitä virtuaalikoneelleni)
   - nyt onnistuineita muutoksia oli 0 ja epäonnistuneita 1
 
-- ... 18
+![service running](images/h1-image18.png)
 
 - 13.19 Komennolla `sudo salt-call --local -l info state.single service.dead apache2 enable=False` haluan, että Apache2-palvelin on pysäytetty ja se ei käynnisty järjestelmän uudelleenkäynnistyessä. Nyt tiedot ovat taas vihreinä. Tiedoissa:
   - ID:nä _apahc2_ ja funktiona _service.dead_
   - kommentissa luki sama kuin aiemmin, ettei apache:sta ole saatavilla
   - onnistuineita muutoksia oli 1 ja epäonnistuneita 0, koska Apache2 ei ole päällä, koska sitä ei ole
 
-- ... 19
+![service dead](images/h1-image19.png)
 
 
 ### user eli käyttäjä
@@ -189,14 +189,14 @@ Tein tehtävät lauantaina 25.10.2025 ja sunnuntaina 26.10.2025 Helsingissä kot
   - komentissa kerrottiin, että uusi käyttäjä hanna01 luotiin
   - muutoksissa kerrotiin mihin ryhmiin käyttäjä lisättiin, mikä on kotihakemisto, nimi, salasana ja muita tietoja
 
-- ... 20
+![user present](images/h1-image20.png)
 
 - 13.29 Komennolla `sudo salt-call --local -l info state.single user.absent hanna01` varmistan taas, ettei käyttäjää _hanna01_ ole olemassa ja ja jos se on olemassa, se poistetaan. Tiedot:
   - ID:nä on _hanna01_ ja funktiona _user.absent_
   - kommentissa ilmoitettiin, että käyttäjä _hanna01_ poistettiin
   - muutoksissa kerrottiin, että _hanna01_-käyttäjä poistettiin ja se poistettiin myös ryhmistä
 
-- ... 21
+![user absent](images/h1-image21.png)
 
 ### cmd eli komento
 
@@ -205,7 +205,7 @@ Tein tehtävät lauantaina 25.10.2025 ja sunnuntaina 26.10.2025 Helsingissä kot
   - komentissa kerrottiin, että komento "touch /tmp/foo" ajetaan
   - muutoksissa nähdään tehdyt muutokset 
 
-- ... 22
+![cmd run](images/h1-image22.png)
 
 
 
