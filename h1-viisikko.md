@@ -51,15 +51,43 @@ Tein tehtävät lauantaina 25.10.2025 ja sunnuntaina 26.10.2025 Helsingissä kot
 
 ## a) Asenna Debian 13-Trixie virtuaalikoneeseen
 
-- Asennettu omalle koneelle UTM (https://mac.getutm.app/) ja ISO-tiedosto Debianin sivuilta (https://cdimage.debian.org/debian-cd/current/arm64/iso-cd/). Apuna käytetty Heinosen (Heinonen, 2025) ohjeita Linuxin asentamisesta, joita sovellettu. Annettu seuraavat:
-  - virtuaalikoneohjelmistona `UTM`.
-  - ISO-tiedostona `debian-13.1.0-arm64-netinst.iso`.
-  - muistiksi laitettu 4096 MiB, CPU:iden määrä 2 ja aseman kooksi 30 GiB.
+- Asennettu omalle koneelle UTM (https://mac.getutm.app/) ja ISO-tiedosto Debianin sivuilta (https://cdimage.debian.org/debian-cd/current/arm64/iso-cd/). Apuna ja soveltaen käytetty Heinosen (Heinonen, 2025) ohjeita Linuxin asentamisesta. Asennuksessa:
+  - virtuaalikoneohjelmistona `UTM`
+  - ISO-tiedostona `debian-13.1.0-arm64-netinst.iso`
+  - muistiksi laitettu 4096 MiB, CPU:iden määrä 2 ja aseman kooksi 30 GiB
 - Lopuksi testattu, että virtuaalikone toimii hyvin ajamalla muutama komento terminaalissa ja hakemalla "sää Helsinki" Firefox-selaimella. Molemmat toimivat hyvin.
 - Aikaa tähän vaiheeseen meni noin 1h.
 
 
 ## b) Asenna Salt (salt-minion) Linuxille (uuteen virtuaalikoneeseesi)
+
+- Tässä tehtävässä käytetty apuna Karvisen ohjetta Salt:n asentamisesta, _Install Salt on Debian 13 Trixie_ (Karvinen, 2025). 
+- klo 9.20 Päivitin ensin ohjelmat komennolla `sudo apt-get update`, jonka jälkeen asensin wget:n komennolla `sudo apt-get install wget` (tämän komennon kirjoitin ensin väärin). Näköjään wget oli jo asennettuna automaattisesti.
+
+- ... KUVA 01 ...
+
+- 9.26 Loin uuden saltrepo-kansion komennolla `mkdir saltrepo/` ja sen jälkeen menin luotuun kansioon komennolla `cd saltrepo/`. Tämän jälkeen latasin kaksi tiedostoa komennoilla `wget https://packages.broadcom.com/artifactory/api/security/keypair/SaltProjectKey/public` ja `wget https://github.com/saltstack/salt-install-guide/releases/latest/download/salt.sources`. Lataukset näyttivät onnistuneen.
+
+- ... KUVA 02 ja 03 ...
+
+- 9.35 Tutkin julkista avainta komennolla `less public`, joka avasi julkisen avaintiedoston. Suljin tiedoston painamalla `q`-näppäintä.
+
+- ... KUVA 04 ...
+
+-  9.38 Avasin toisen tiedoston komennolla `less salt.sources`. Tämän suljin kanssa `q`-näppäimellä.
+
+- ... KUVA 05 ...
+
+- 9.40 Katsoin vielä julkisen avaimen sormenjäljen komennolla `gpg --show-key --with-fingerprint public`. Tämä siis tunnistaa avaimen.
+
+- ... KUVA 06 ...
+
+- 9.43 Avaimen lisäämisellä luotan projektiin. Karvinen kertoo, että tässä on paljon luottamusta, koska tämä olisi sama kuin lataisimme ohjelman järjestelmäämme ja sitä kautta joku voisi saada root-tason oikeudet sinne. Annoin komennot `sudo cp public /etc/apt/keyrings/salt-archive-keyring.pgp` ja `sudo cp salt.sources /etc/apt/sources.list.d/`. Annoin ensimmäiselle komennolle salasanan (kirjoitin ensimmäisellä kerralla väärin).
+
+- ... KUVA 07 ...
+
+- 
+
 
 
 ## Lähteet
