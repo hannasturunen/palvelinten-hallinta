@@ -86,7 +86,21 @@ Tein tehtävät lauantaina 25.10.2025 ja sunnuntaina 26.10.2025 Helsingissä kot
 
 - ... KUVA 07 ...
 
-- 
+- 9.51 Ensin päivitin taas ohjelmat komennolla `sudo apt-get update`, jonka jälkeen asensin Salt:n orjan (minion) ja isännän (master) komennolla `sudo apt-get install salt-minion salt-master`. Kysyi haluanko ladata tietyt paketit, jotka vievät tietyn verran tilaa ja vastasin `Y` eli yes. Kesti hetken aikaa, kun asensi kaiken.
+
+- ... KUVA 08 ...
+
+- 9.57 Testasin vielä, että Salt toimii niin kuin pitääkin komennolla `salt --version`. Komento antoi `salt 3007.8 (Chlorine)`, joten Salt on ladattu onnistuneesti.
+
+- ... KUVA 09 ...
+
+- 10.00 Karvisen ohjeissa on myös esimerkki oikeasta Salt-komennosta, jota halusin itsekin testata. Annoin komennon `sudo salt-call --local state.single file.managed /tmp/hellohanna`. 
+
+- ... KUVA 10 ...
+
+- 10.02 Tämän jälkeen kävin vielä katsomassa, että juuri tehty tiedosto on varmasti tuolla komennolla `ls /tmp/hellohanna` ja antoi tulosteena `/tmp/hellohanna`, joten Salt on asennettuna ja se on testattu kahdella tavalla.
+
+- ... KUVA 11 ...
 
 
 
