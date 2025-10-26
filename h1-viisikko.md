@@ -182,9 +182,30 @@ Tein tehtävät lauantaina 25.10.2025 ja sunnuntaina 26.10.2025 Helsingissä kot
 - ... 19
 
 
-### user
+### user eli käyttäjä
 
+- 13.25 Komennolla `sudo salt-call --local -l info state.single user.present hanna01` tarkistan, että käyttäjä _hanna01_ on olemassa ja jos sitä ei ole, se luodaan. Tiedot:
+  - ID:nä on _hanna01_ ja funktiona _user.present_
+  - komentissa kerrottiin, että uusi käyttäjä hanna01 luotiin
+  - muutoksissa kerrotiin mihin ryhmiin käyttäjä lisättiin, mikä on kotihakemisto, nimi, salasana ja muita tietoja
 
+- ... 20
+
+- 13.29 Komennolla `sudo salt-call --local -l info state.single user.absent hanna01` varmistan taas, ettei käyttäjää _hanna01_ ole olemassa ja ja jos se on olemassa, se poistetaan. Tiedot:
+  - ID:nä on _hanna01_ ja funktiona _user.absent_
+  - kommentissa ilmoitettiin, että käyttäjä _hanna01_ poistettiin
+  - muutoksissa kerrottiin, että _hanna01_-käyttäjä poistettiin ja se poistettiin myös ryhmistä
+
+- ... 21
+
+### cmd eli komento
+
+- 13.34 Komennolla `sudo salt-call --local -l info state.single cmd.run 'touch /tmp/foo' creates="/tmp/foo"` lisätään /tmp/foo, mutta vain  tämä tehdään vain silloin, kun sitä ei vielä ole. Eli jos tiedosto löytyy, sitä ei ludoa uudestaan, vaan se jätetään rauhaan. Tiedot:
+  - ID:nä _touch /tmp_foo_ ja funktiona _cmd.run_
+  - komentissa kerrottiin, että komento "touch /tmp/foo" ajetaan
+  - muutoksissa nähdään tehdyt muutokset 
+
+- ... 22
 
 
 
