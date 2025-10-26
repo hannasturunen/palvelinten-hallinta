@@ -66,7 +66,10 @@ Tein tehtävät lauantaina 25.10.2025 ja sunnuntaina 26.10.2025 Helsingissä kot
 
 ![update ja wget](images/h1-image01.png)
 
-- 9.26 Loin uuden saltrepo-kansion komennolla `mkdir saltrepo/` ja sen jälkeen menin luotuun kansioon komennolla `cd saltrepo/`. Tämän jälkeen latasin kaksi tiedostoa komennoilla `wget https://packages.broadcom.com/artifactory/api/security/keypair/SaltProjectKey/public` ja `wget https://github.com/saltstack/salt-install-guide/releases/latest/download/salt.sources`. Lataukset näyttivät onnistuneen.
+- 9.26 Loin uuden saltrepo-kansion komennolla `mkdir saltrepo/` ja sen jälkeen menin luotuun kansioon komennolla `cd saltrepo/`. Tämän jälkeen latasin kaksi tiedostoa komennoilla:
+  - `wget https://packages.broadcom.com/artifactory/api/security/keypair/SaltProjectKey/public`
+  - `wget https://github.com/saltstack/salt-install-guide/releases/latest/download/salt.sources`
+  - Lataukset näyttivät onnistuneen.
 
 ![saltrepo ja lataukset](images/h1-image02.png)
 
