@@ -208,6 +208,9 @@ Tein tehtävät lauantaina 25.10.2025 ja sunnuntaina 26.10.2025 Helsingissä kot
 ![cmd run](images/h1-image22.png)
 
 
+## d) Idempotentti. Anna esimerkki idempotenssista. Aja 'salt-call --local' komentoja, analysoi tulokset, selitä miten idempotenssi ilmenee.
+
+- 
 
 
 ## Lähteet
