@@ -64,7 +64,7 @@ Tein tehtävät lauantaina 25.10.2025 ja sunnuntaina 26.10.2025 Helsingissä kot
 - Tässä tehtävässä käytetty apuna Karvisen ohjetta Salt:n asentamisesta, _Install Salt on Debian 13 Trixie_ (Karvinen, 2025). 
 - klo 9.20 Päivitin ensin ohjelmat komennolla `sudo apt-get update`, jonka jälkeen asensin wget:n komennolla `sudo apt-get install wget` (tämän komennon kirjoitin ensin väärin). Näköjään wget oli jo asennettuna automaattisesti.
 
-![update ja wget](images/h1-image01.jpg)
+![update ja wget](images/h1-image01.png)
 
 - 9.26 Loin uuden saltrepo-kansion komennolla `mkdir saltrepo/` ja sen jälkeen menin luotuun kansioon komennolla `cd saltrepo/`. Tämän jälkeen latasin kaksi tiedostoa komennoilla `wget https://packages.broadcom.com/artifactory/api/security/keypair/SaltProjectKey/public` ja `wget https://github.com/saltstack/salt-install-guide/releases/latest/download/salt.sources`. Lataukset näyttivät onnistuneen.
 
