@@ -168,7 +168,7 @@ Tein tehtävät lauantaina 25.10.2025 ja sunnuntaina 26.10.2025 Helsingissä kot
 ### service eli palvelut
 
 - 13.12 Komennolla `sudo salt-call --local -l info state.single service.running apache2 enable=True` voin varmistaa, että Apache2-palvelin on käynnissä ja se käynnistetään automaattisesti, kun järjestelmä uudelleenkäynnistetään. Tässä heti näki, että ei ole toiminnassa, koska teksti oli punaisena, kun aikaisemmin se oli ollut vihreänä. Tiedoissa:
-  - ID:nä _apahc2_ ja funktiona _service.running_
+  - ID:nä _apahce2_ ja funktiona _service.running_
   - kommentissa luki, että apache2-nimistä palvelua ei ole saatavilla (ja tämä on ihan totta, koska en ole asentanut sitä virtuaalikoneelleni)
   - nyt onnistuineita muutoksia oli 0 ja epäonnistuneita 1
 
@@ -210,7 +210,51 @@ Tein tehtävät lauantaina 25.10.2025 ja sunnuntaina 26.10.2025 Helsingissä kot
 
 ## d) Idempotentti. Anna esimerkki idempotenssista. Aja 'salt-call --local' komentoja, analysoi tulokset, selitä miten idempotenssi ilmenee.
 
-- 
+- Idempotentti tarkoittaa sitä, että suoritetaan komento monta kertaa ja se tuottaa aina saman lopputuloksen. Tila ei siis muutu, koska se on jo halutussa tilassa.
+- Esimerkiksi idempotenssista: kun ajetaan ensimmäisen kerran komento `sudo salt-call --local -l info state.single file.managed /tmp/hellohanna`, se luo kansion hellohanna, jos sitä ei ollut. Komennon muutoksissa kerrotaan, että uusi kansio on luotu. Toisella kerralla, kun ajetaan sama komento, kansio on jo siellä, joten muutoksia ei tehdä ja kaikki pysyy samana. Muutoksissa kerrotaan, että mitään muutoksia ei tehty. Ensimmäinen kerta tekee tarvittavat muutokset, mutta seuraavat eivät, koska haluttu tila on jo oikein. Tällä vältetään turhien muutosten tekemistä.
+(Wikipedia, 3.7.2019.)
+
+- 15.42 Päätin käyttää samoja komentoja kuin yllä. Ajoin ensin komennon `sudo salt-call --local -l info state.single pkg.installed tree` ja tämän jälkeen ajoin saman komennon uudestaan. Ensimmäisellä kerralla (ylempi kuva):
+  - _comment_: tree-paketti asennettiin
+  - _changes_: uusi paketti on 2.2.1-1
+  - _succeeded_: 1 ja muutettu 1
+- Toisella kerralla (alempi kuva):
+  - _comment_: kaikki määritetyt paketit on asennettu 
+  - _changes_: ei tehty mitään eli tyhjä
+  - _succeeded_: 1, mutta mitään ei muutettu
+- Ajoin komennon vielä muutaman kerran uudestaan, mutta mitään muutoksia ei tehty, koska paketti oli jo ladattu ja halutussa tilassa.
+
+![pkg idempotenssi ennen](images/h1-image23.png)
+
+![pkg idempotenssi jälkeen](images/h1-image24.png)
+
+- 15.55 Seuraavaksi ajoin komennon `sudo salt-call --local -l info state.single file.managed /tmp/hellohanna` ja saman uudestaan heti perään. Ensimmäisellä kerralla (ylempi kuva):
+  - _comment_: tyhjä tiedosto
+  - _changes_: luotiin uusi tiedosto /tmp/hellohanna
+  - _succeeded_: 1 ja muutettu 1
+- Toisella kerralla (alempi kuva):
+  - _comment_: ilmoittaa, että tiedosto /tmp/hellohanna on olemassa, joten muutoksia ei tehdä
+  - _changes_: ei tehty mitään eli tyhjä
+  - _succeeded_: 1, mutta mitään ei muutettu
+- Tässä on ihan sama kuin ylempänä, eli koska tiedosto on jo olemassa ja sitä ei ole muutettu, muutoksia ei tarvitse tehdä.
+
+![file idempotenssi ennen](images/h1-image25.png)
+
+![file idempotenssi jälkeen](images/h1-image26.png)
+
+- 16.11 Viimeiseksi esimerkiksi valitsin komennon `sudo salt-call --local -l info state.single cmd.run 'touch /tmp/hei' creates="/tmp/hei"`, jonka ajoin ja heti perään uudestaan. Muokkasin hieman komentoa aikaisemmasta eli foo-sanan tilalle vaihdoin hei, koska tuo on varmasti jo olemassa aikaisemmasta tehtävästä. Ensimmäisellä kerralla (ylempi kuva):
+  - _comment_: komento "touch /tmp/hei" suoritettiin
+  - _changes_: kerrottu muutokset, jotka tehty
+  - _succeeded_: 1 ja muutettu 1
+- Toisella kerralla (alempi kuva):
+  - _comment_: kertoo, että /tmp/hei on olemassa
+  - _changes_: ei tehty mitään eli tyhjä
+  - _succeeded_: 1, mutta mitään ei muutettu
+- Tässäkin ajettiin komento uudestaan, mutta koska tila oli se, joka haluttiin, tulos pysyi samana. Ei siis tehty työtä muokkaamalla komentoa, joka on jo halutussa tilassa.
+
+![cmd idempotenssi ennen](images/h1-image27.png)
+
+![cmd idempotenssi jälkeen](images/h1-image28.png)
 
 
 ## Lähteet
@@ -220,4 +264,5 @@ Tein tehtävät lauantaina 25.10.2025 ja sunnuntaina 26.10.2025 Helsingissä kot
 - Karvinen, T. 28.3.2018. Salt Quickstart – Salt Stack Master and Slave on Ubuntu Linux. Luettavissa: https://terokarvinen.com/2018/03/28/salt-quickstart-salt-stack-master-and-slave-on-ubuntu-linux/. Luettu: 25.10.2025.
 - Karvinen, T. 28.10.2021. Run Salt Command Locally. Luettavissa: https://terokarvinen.com/2021/salt-run-command-locally/. Luettu: 25.10.2025.
 - Karvinen, T. 20.10.2025. Install Salt on Debian 13 Trixie. Luettavissa: https://terokarvinen.com/install-salt-on-debian-13-trixie/. Luettu: 25.10.2025.
+- Wikipedia 3.7.2019. Idempotenssi. Luettavissa: https://fi.wikipedia.org/wiki/Idempotenssi. Luettu: 26.10.2025.
 - Pohjana Tero Karvinen 2025: Palvelinten Hallinta. Luettavissa: https://terokarvinen.com/palvelinten-hallinta/. Luettu: 25.10.2025.
