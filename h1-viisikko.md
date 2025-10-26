@@ -110,7 +110,58 @@ Tein tehtävät lauantaina 25.10.2025 ja sunnuntaina 26.10.2025 Helsingissä kot
 
 ## c) Viisi tärkeintä. Näytä Linuxissa esimerkit viidestä tärkeimmästä Saltin tilafunktiosta: pkg, file, service, user, cmd. Analysoi ja selitä tulokset.
 
-- 
+- Tässä tehtävässä on käytetty apuna Karvisen ohjetta Salt:n komennoista, _Run Salt Command Locally_ (Karvinen, 2021). 
+- klo 12.22 Tarkistin komennolla `sudo salt-call --version`, että minulla oli Salt-orja koneella. Oli, kuten pitikin olla, koska asensin sen juuri aikaisemmin.
+
+- ... 12
+
+### pkg.installed
+
+- 12.25 Komennolla `sudo salt-call --local -l info state.single pkg.installed tree` tarkistin onko tree-paketti asennettuna ja jos ei, asennettiin se. Tämän jälkeen antoi tiedot mitä teki. Tiedoissa:
+  - ID:nä _tree_ ja funktiona _pkg.installed_ eli haluttiin selvittää onko tree asennettuna vai ei ja jos ei ollut, se asennettiin
+  - result-kohdassa lukee _true_, joten tulos on totta (eli asennettiin tai päivitettiin)
+  - comment-kohdassa kerrottiin mitä tehtiin (näyttää, että paketti päivitettiin)
+  - kerrottiin aloitusaika ja kesto
+  - ilmoitettiin mitö muutoksia tehtiin
+  - alempana ilmoitettiin, että _succeeded_ eli onnistuneita oli 1 (ja muutettuja changed oli myös 1) ja _failed_ (epäonnistuneita) oli 0
+  - lopuksi kerrottiin kuinka monta tilaa muokattiin ja tähän kulunut aika
+
+- ... 13
+
+- 12.40 Komennolla `sudo salt-call --local -l info state.single pkg.removed tree` poistin tree-paketin. Tässä tietoina verrattuna edelliseen:
+  - ID sama tree, mutta funktiona _pkg.removed_, koska paketti poistettu
+  - komentissa lukee, että kaikki kohdepaketit poistettu
+  - muutoksissa kerrotaan, että vanha paketti oli _2.2.1-1_ ja uutta ei ole
+  - onnistuneita muutoksia oli 1 ja epäonnistuneita 0
+
+- ... 14
+
+### file.managed
+
+- 12.50 Komennolla `sudo salt-call --local -l info state.single file.managed /tmp/hellohanna` katsoin onko tiedostoa olemassa ja sen pitäisi olla, koska tein sellaisen aikaisemmin. Antoikin vastaukseksi, että `tmp/hellohanna` on olemassa, joten muutoksia ei tehdä. Sen lisäksi tiedoissa:
+  - ID:nä nyt _/tmp/hellohanna_ ja funktiona _file.managed_
+  - komenttina oli tieto, että tiedosto on jo olemassa ja mitään muutoksia ei tehty
+  - changes-kohdassa ei ole mitään, joten muutoksia ei tehty
+  - onnistuneita oli taas 1 ja epäonnistuneita 0
+
+- ... 15
+
+- 12.59 Annoin komennon `sudo salt-call --local -l info state.single file.managed /tmp/moihanna contents="foo"`, jolla tarkistin, että onko moihanna-kansiota olemassa ja sisältääkö se tekstin _foo_. Tietoina tuli:
+  - ID:nä nyt _/tmp/moihanna_ ja funktiona sama _file.managed_ (funktio sama kuin edellisessä)
+  - kommenttina oli tieto, että tiedosto _/tmp/moihanna_ päivitettiin
+  - muutoksissa kerrottiin, että eroina se, että luotiin uusi tiedosto
+  - onnistuneita oli taas 1 ja epäonnistuneita 0
+
+- ... 16
+
+- 13.05 Lopuksi ajoin komennon `sudo salt-call --local -l info state.single file.absent /tmp/hellohanna`, joka poistaa tiedoston _/tmp/hellohanna_, jos se on olemassa. Tiedosto on olemassa, joten tällöin se poistetaan.
+  -  ID oli _/tmp/hellohanna_ ja funktiona _file.absent_
+  -  komenttina oli tieto, että tiedosto _/tmp/hellohanna_ poistettiin
+  -  muutoksissa luki _removed: /tmp/hellohanna_ eli tiedosto poistettiin ja sitä ei enää ole
+  - onnistuneita muutoksia oli 1 ja epäonnistuneita 0
+
+- ... 17
+
 
 
 ## Lähteet
